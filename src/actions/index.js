@@ -1,0 +1,1 @@
+export { albumsActions } from './albums';

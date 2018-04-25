@@ -8,8 +8,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootReducer } from './reducers';
 import { rootEpic } from './epics';
 
-console.log(process.env);
-const composer = process.env.NODE_ENV === 'production' ? compose : composeWithDevTools;
+
+const composer = process.env.NODE_ENV === 'development' ? composeWithDevTools : compose;
 
 const persistConfig = { key: 'root', storage };
 const persistedReducer = persistReducer(persistConfig, rootReducer);

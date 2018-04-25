@@ -6,6 +6,7 @@ import { albumsActions } from '../actions';
 const initialState = () => ({
   fetching: false,
   list: [],
+  error: undefined,
 })
 
 export const albumsReducer = handleActions({
@@ -15,7 +16,7 @@ export const albumsReducer = handleActions({
   [albumsActions.list.success](state, action) {
     return { ...state, fetching: false, list: action.payload };
   },
-  [albumsActions.list.failure](state) {
-    return { ...state, fetching: false, list: [] };
+  [albumsActions.list.failure](state, action) {
+    return { ...state, fetching: false, list: [], error: action.payload };
   },
 }, initialState());

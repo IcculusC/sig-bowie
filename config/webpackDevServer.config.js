@@ -1,5 +1,7 @@
 'use strict';
 
+const SpotifyApi = require('spotify-web-api-node');
+
 const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
 const ignoredFiles = require('react-dev-utils/ignoredFiles');
@@ -82,6 +84,28 @@ module.exports = function(proxy, allowedHost) {
     public: allowedHost,
     proxy,
     before(app) {
+      let expires = 0;
+
+      const spotifyApi = new SpotifyApi({
+        clientId: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
+        clientSecret: process.env.REACT_APP_SPOTIFY_CLIENT_SECRET,
+      });
+
+      app.get('/albums', function(req, res) {
+        if (Date.now() > expires) {
+          return spotifyApi.clientCredentialsGrant().then(function(result) {
+            spotifyApi.setAccessToken(result.body['access_token']);
+            expires = Date.now() + result.body['expires_in'];
+
+            return spotifyApi.getArtistAlbums('0oSGxfWSnnOXhD2fKuz2Gy', { limit: 10, include_groups: 'album' })
+              .then(function(data) { res.json(data.body) });
+          }).catch(() => res.status(400).end());
+        }
+
+        return spotifyApi.getArtistAlbums('0oSGxfWSnnOXhD2fKuz2Gy', { limit: 10, include_groups: 'album' })
+          .then(function(data) { res.json(data.body) });
+      });
+
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());
       // This service worker file is effectively a 'no-op' that will reset any

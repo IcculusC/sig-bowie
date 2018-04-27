@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app properly renders an album 1`] = `
+Array [
+  <div
+    className="Header-root-1"
+>
+    <header
+        className="MuiPaper-root-182 MuiPaper-elevation4-188 MuiAppBar-root-174 MuiAppBar-positionStatic-178 MuiAppBar-colorDefault-179"
+    >
+        <div
+            className="MuiToolbar-root-209 MuiToolbar-gutters-210"
+        >
+            <button
+                aria-label="Bowie Baby"
+                className="MuiButtonBase-root-217 MuiIconButton-root-211 MuiIconButton-colorInherit-212"
+                disabled={false}
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+            >
+                <span
+                    className="MuiIconButton-label-216"
+                >
+                    <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root-219"
+                        color="#000"
+                        focusable="false"
+                        viewBox="0 0 260 260"
+                    >
+                        <path
+                            d="m55,237 74-228 74,228L9,96h240"
+                        />
+                    </svg>
+                </span>
+                <span
+                    className="MuiTouchRipple-root-225"
+                />
+            </button>
+            <h2
+                className="MuiTypography-root-232 MuiTypography-title-238 MuiTypography-colorInherit-251"
+            >
+                Bowie Baby
+            </h2>
+        </div>
+    </header>
+</div>,
+  <div
+    className="MuiGrid-container-256 MuiGrid-spacing-xs-24-279"
+    style={
+        Object {
+            "padding": "1rem",
+          }
+    }
+>
+    <div
+        className="MuiGrid-item-257 MuiGrid-grid-xs-12-293 MuiGrid-grid-lg-4-324"
+    >
+        <div
+            className="MuiPaper-root-182 MuiPaper-elevation2-186 MuiPaper-rounded-183 MuiCard-root-348 Album-card-346"
+        >
+            <div
+                className="AlbumDetails-details-349"
+            >
+                <div
+                    className="MuiCardContent-root-353 AlbumDetails-content-350"
+                >
+                    <p
+                        className="MuiTypography-root-232 MuiTypography-body1-241"
+                    >
+                        foo
+                    </p>
+                </div>
+                <div
+                    className="AlbumDetails-open-351"
+                >
+                    <a
+                        className="MuiButtonBase-root-217 MuiButton-root-354 MuiButton-raised-359 MuiButton-raisedSecondary-361 MuiButton-sizeSmall-366"
+                        href="foo"
+                        onBlur={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        role="button"
+                        tabIndex="0"
+                        target="_blank"
+                    >
+                        <span
+                            className="MuiButton-label-355"
+                        >
+                            <svg
+                                aria-hidden="true"
+                                className="MuiSvgIcon-root-219 AlbumDetails-leftIcon-352"
+                                color={undefined}
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                            >
+                                <g>
+                                    <path
+                                        d="M8 5v14l11-7z"
+                                    />
+                                </g>
+                            </svg>
+                            Play on Spotify
+                        </span>
+                        <span
+                            className="MuiTouchRipple-root-225"
+                        />
+                    </a>
+                </div>
+            </div>
+            <div
+                className="MuiCardMedia-root-369 Album-cover-347"
+                src={undefined}
+                style={
+                    Object {
+                        "backgroundImage": "url(foo)",
+                      }
+                }
+                title="foo"
+            />
+        </div>
+    </div>
+</div>,
+]
+`;
+
+exports[`app renders without crashing 1`] = `
+Array [
+  <div
+    className="Header-root-1"
+>
+    <header
+        className="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-7"
+    >
+        <div
+            className="MuiToolbar-root-37 MuiToolbar-gutters-38"
+        >
+            <button
+                aria-label="Bowie Baby"
+                className="MuiButtonBase-root-45 MuiIconButton-root-39 MuiIconButton-colorInherit-40"
+                disabled={false}
+                onBlur={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex="0"
+                type="button"
+            >
+                <span
+                    className="MuiIconButton-label-44"
+                >
+                    <svg
+                        aria-hidden="true"
+                        className="MuiSvgIcon-root-47"
+                        color="#000"
+                        focusable="false"
+                        viewBox="0 0 260 260"
+                    >
+                        <path
+                            d="m55,237 74-228 74,228L9,96h240"
+                        />
+                    </svg>
+                </span>
+                <span
+                    className="MuiTouchRipple-root-53"
+                />
+            </button>
+            <h2
+                className="MuiTypography-root-60 MuiTypography-title-66 MuiTypography-colorInherit-79"
+            >
+                Bowie Baby
+            </h2>
+        </div>
+    </header>
+</div>,
+  <div
+    className="MuiGrid-container-84 MuiGrid-spacing-xs-24-107"
+    style={
+        Object {
+            "padding": "1rem",
+          }
+    }
+/>,
+]
+`;

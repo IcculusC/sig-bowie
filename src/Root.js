@@ -4,7 +4,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import CssBaseline from 'material-ui/CssBaseline';
 
 import { configureStore } from './configureStore';
-import App from './App';
+import { App } from './App';
 
 
 const { store, persistor } = configureStore();

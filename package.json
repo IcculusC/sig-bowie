@@ -67,7 +67,8 @@
       "src/**/*.{js,jsx,mjs}",
       "!src/configureStore.js",
       "!src/registerServiceWorker.js",
-      "!src/(actions|components|epics|reducers)/**/index.js"
+      "!src/Root.js",
+      "!src/**/index.js"
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js"

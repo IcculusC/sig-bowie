@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui';
 import Grid from 'material-ui/Grid';
@@ -8,17 +9,31 @@ import { Album } from './components';
 import { albumsSelector } from './common';
 
 
-class App extends Component {
-  render() {
-    return (
-      <MuiThemeProvider theme={createMuiTheme()} >
-        <Header />
-        <Grid container spacing={24} alignItems='stretch' style={{ padding: '1rem' }} >
-          {this.props.list.map(item => <Album key={item.id} {...item} />)}
-        </Grid>
-      </MuiThemeProvider>
-    );
-  }
+const propTypes = {
+  list: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    releaseDate: PropTypes.string.isRequired,
+    images: PropTypes.arrayOf(PropTypes.shape({
+      height: PropTypes.number.isRequired,
+      url: PropTypes.string.isRequired,
+      width: PropTypes.number.isRequired,
+    })).isRequired,
+    openUrl: PropTypes.string.isRequired,
+  })).isRequired,
 }
 
-export default connect(state => ({ list: albumsSelector(state) }))(App);
+export const AppComponent = ({ list }) => (
+  <MuiThemeProvider theme={createMuiTheme()} >
+    <Header />
+    <Grid container spacing={24} style={{ padding: '1rem' }} >
+      {list.map(item => <Album key={item.id} {...item} />)}
+    </Grid>
+  </MuiThemeProvider>
+)
+
+AppComponent.propTypes = propTypes;
+AppComponent.displayName = 'App';
+
+export const mapStateToProps = state => ({ list: albumsSelector(state) });
+
+export const App = connect(mapStateToProps)(AppComponent);

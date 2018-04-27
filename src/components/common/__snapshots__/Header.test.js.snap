@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders Blackstar icon properly 1`] = `
+<svg
+  aria-hidden="true"
+  className="MuiSvgIcon-root-47"
+  color="#000"
+  focusable="false"
+  viewBox="0 0 260 260"
+>
+  <path
+    d="m55,237 74-228 74,228L9,96h240"
+  />
+</svg>
+`;
+
+exports[`Header component renders properly 1`] = `
+<div
+  className="Header-root-1"
+>
+  <header
+    className="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-2 MuiAppBar-positionStatic-6 MuiAppBar-colorDefault-7"
+  >
+    <div
+      className="MuiToolbar-root-37 MuiToolbar-gutters-38"
+    >
+      <button
+        aria-label="Bowie Baby"
+        className="MuiButtonBase-root-45 MuiIconButton-root-39 MuiIconButton-colorInherit-40"
+        disabled={false}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiIconButton-label-44"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-47"
+            color="#000"
+            focusable="false"
+            viewBox="0 0 260 260"
+          >
+            <path
+              d="m55,237 74-228 74,228L9,96h240"
+            />
+          </svg>
+        </span>
+        <span
+          className="MuiTouchRipple-root-53"
+        />
+      </button>
+      <h2
+        className="MuiTypography-root-60 MuiTypography-title-66 MuiTypography-colorInherit-79"
+      >
+        Bowie Baby
+      </h2>
+    </div>
+  </header>
+</div>
+`;

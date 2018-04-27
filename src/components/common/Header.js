@@ -20,7 +20,7 @@ const propTypes = {
   }).isRequired,
 };
 
-const BlackstarIcon = props => (
+export const BlackstarIcon = props => (
   <SvgIcon {...props} >
     <path d='m55,237 74-228 74,228L9,96h240'/>
   </SvgIcon>

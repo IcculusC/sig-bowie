@@ -3,7 +3,7 @@ import { handleActions } from 'redux-actions';
 import { albumsActions } from '../actions';
 
 
-const initialState = () => ({
+export const initialState = () => ({
   fetching: false,
   list: [],
   error: undefined,

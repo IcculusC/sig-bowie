@@ -39,6 +39,7 @@
     "react-dev-utils": "^5.0.1",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
+    "react-test-renderer": "^16.3.2",
     "redux": "^4.0.0",
     "redux-actions": "^2.3.0",
     "redux-devtools-extension": "^2.13.2",
@@ -63,7 +64,10 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,mjs}"
+      "src/**/*.{js,jsx,mjs}",
+      "!src/configureStore.js",
+      "!src/registerServiceWorker.js",
+      "!src/(actions|components|epics|reducers)/**/index.js"
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js"

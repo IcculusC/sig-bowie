@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { albumsReducer } from './albums';
+import { albumsReducer as albums } from './albums';
 
 
-export const rootReducer = combineReducers({ albumsReducer });
+export const rootReducer = combineReducers({ albums });

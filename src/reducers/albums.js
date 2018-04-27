@@ -14,7 +14,21 @@ export const albumsReducer = handleActions({
     return { ...state, fetching: true };
   },
   [albumsActions.list.success](state, action) {
-    return { ...state, fetching: false, list: action.payload };
+    const filtered = action.payload.map(({
+      id,
+      name,
+      release_date: releaseDate,
+      images,
+      external_urls: { spotify: openUrl },
+    }) => ({
+      id,
+      name,
+      releaseDate,
+      images,
+      openUrl,
+    }));
+    
+    return { ...state, fetching: false, list: filtered };
   },
   [albumsActions.list.failure](state, action) {
     return { ...state, fetching: false, list: [], error: action.payload };

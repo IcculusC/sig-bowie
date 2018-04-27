@@ -13,8 +13,8 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={createMuiTheme()} >
         <Header />
-        <Grid container spacing={24} justify='center' alignItems='stretch' style={{ padding: '1rem' }} >
-        {this.props.list.map(item => <Album key={item.id} {...item} />)}
+        <Grid container spacing={24} alignItems='stretch' style={{ padding: '1rem' }} >
+          {this.props.list.map(item => <Album key={item.id} {...item} />)}
         </Grid>
       </MuiThemeProvider>
     );

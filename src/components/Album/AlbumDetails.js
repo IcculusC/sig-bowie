@@ -11,6 +11,7 @@ const styles = theme => ({
   details: {
     display: 'flex',
     flexDirection: 'column',
+    flex: '0 1 100%',
   },
   content: {
     flex: '1 0 auto',
@@ -48,6 +49,7 @@ const AlbumDetailsComponent = ({ classes, title, openUrl }) => (
         href={openUrl}
         target='_blank'
         size='small'
+        fullWidth
       >
         <PlayArrow className={classes.leftIcon} />
         Play on Spotify

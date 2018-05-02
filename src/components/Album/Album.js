@@ -10,7 +10,6 @@ import { AlbumDetails } from './AlbumDetails';
 const styles = {
   card: {
     display: 'flex',
-    justifyContent: 'space-between'
   },
   cover: {
     width: 150,

@@ -33,9 +33,9 @@ export const get$ = (action$, liteStore, { ajax }) =>
 export const scroll$ = (action$) => {
   const bottom$ = action$.ofType('SCROLL')
     .filter(() => (document.body.scrollHeight - window.scrollY) === window.innerHeight)
-    .mapTo({ type: 'PAGE/INCREASE_OFFSET' });
+    .mapTo(albumsActions.page.increaseOffset());
 
-  const load$ = action$.ofType('PAGE/INCREASE_OFFSET').mapTo(albumsActions.list.request());
+  const load$ = action$.ofType(albumsActions.page.increaseOffset.toString()).mapTo(albumsActions.list.request());
 
   return Observable.merge(bottom$, load$);
 }

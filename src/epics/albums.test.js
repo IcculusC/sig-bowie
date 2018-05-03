@@ -39,7 +39,7 @@ describe('albums epics', () => {
         items: []
       }
     });
-    albumsEpic(getAction$, {}, { ajax })
+    albumsEpic(getAction$, store(), { ajax })
       .subscribe((output) => {
         expect(output).toEqual(albumsActions.list.success({ response: { items: [] } }));
         done();
@@ -51,7 +51,7 @@ describe('albums epics', () => {
       originalEvent: 'blah',
     });
 
-    albumsEpic(getAction$, {}, { ajax })
+    albumsEpic(getAction$, store(), { ajax })
       .subscribe((output) => {
         expect(output.type).toEqual(albumsActions.list.failure.toString());
         done();

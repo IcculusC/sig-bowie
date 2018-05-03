@@ -23,13 +23,6 @@ export const configureStore = () => {
   const store = createStore(persistedReducer, composer(applyMiddleware(epicMiddleware)));
   const persistor = persistStore(store);
   Observable.fromEvent(window, 'scroll')
-    // .throttleTime(500)
-    // .map(() => {
-    //   console.log(window.scrollY + window.innerHeight, document);
-    //   console.log(document.body.scrollHeight - window.scrollY, window.innerHeight);
-
-    //   return null;
-    // })
     .subscribe(event => store.dispatch({ type: 'SCROLL' }));
   return { store, persistor };
 }

@@ -85,7 +85,7 @@ Array [
                     className="AlbumDetails-open-351"
                 >
                     <a
-                        className="MuiButtonBase-root-217 MuiButton-root-354 MuiButton-raised-359 MuiButton-raisedSecondary-361 MuiButton-sizeSmall-366"
+                        className="MuiButtonBase-root-217 MuiButton-root-354 MuiButton-raised-359 MuiButton-raisedSecondary-361 MuiButton-sizeSmall-366 MuiButton-fullWidth-368"
                         href="foo"
                         onBlur={[Function]}
                         onFocus={[Function]}

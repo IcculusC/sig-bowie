@@ -36,7 +36,7 @@ export const albumsReducer = handleActions({
   [albumsActions.list.failure](state, action) {
     return { ...state, fetching: false, list: [], error: action.payload };
   },
-  'PAGE/INCREASE_OFFSET'(state) {
+  [albumsActions.page.increaseOffset](state) {
     return { ...state, offset: state.offset + state.limit };
-  }
+  },
 }, initialState());

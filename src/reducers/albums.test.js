@@ -61,6 +61,13 @@ describe('albums reducer', () => {
       });
   });
 
+  it('properly deduplicates albums if the response contains duplicates', () => {
+    let reduced = albumsReducer(initialState(), albumsActions.list.success({ response: albumsResponse }));
+    expect(reduced.list.length).toEqual(2);
+    reduced = albumsReducer(initialState(), albumsActions.list.success({ response: albumsResponse }));
+    expect(reduced.list.length).toEqual(2);
+  });
+
   it('properly handles a list request success action', () => {
     expect(albumsReducer(initialState(), albumsActions.list.success({ response: albumsResponse })))
       .toEqual({
@@ -81,5 +88,9 @@ describe('albums reducer', () => {
 
     expect(albumsReducer(state, albumsActions.list.failure(err)))
       .toEqual({ ...initialState(), error: err, })
+  });
+
+  it('properly increases the offset', () => {
+    expect(albumsReducer(initialState(), albumsActions.page.increaseOffset()).offset).toEqual(10);
   });
 });

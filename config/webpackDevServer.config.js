@@ -91,6 +91,7 @@ module.exports = function(proxy, allowedHost) {
         clientSecret: process.env.REACT_APP_SPOTIFY_CLIENT_SECRET,
       });
 
+      // DRY up the spotify artist albums call a bit
       function iHateTyping(req, res) {
         return spotifyApi.getArtistAlbums('0oSGxfWSnnOXhD2fKuz2Gy', { limit: req.query.limit || 10, offset: req.query.offset || 0, include_groups: 'album' })
           .then(function(data) { res.json(data.body) });

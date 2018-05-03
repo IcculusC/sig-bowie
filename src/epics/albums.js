@@ -1,5 +1,6 @@
 import { Observable } from 'rxjs';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
@@ -7,7 +8,7 @@ import 'rxjs/add/operator/mergeMap';
 import { combineEpics } from "redux-observable";
 
 import { albumsActions } from '../actions';
-import { albumsCountSelector } from '../common';
+import { albumsCountSelector, albumsPaginationSelector } from '../common';
 
 
 export const init$ = (action$, store) =>
@@ -19,12 +20,24 @@ export const init$ = (action$, store) =>
       return Observable.of(albumsActions.list.request());
     });
 
-const get$ = (action$, _, { ajax }) =>
+export const get$ = (action$, liteStore, { ajax }) =>
   action$.ofType(albumsActions.list.request.toString())
-    .mergeMap(() =>
-      ajax('/albums') // custom albums endpoint served with express in react-dev-server - hacky
+    .mergeMap(() => {
+      const { limit, offset } = albumsPaginationSelector(liteStore.getState());
+
+      return ajax(`/albums?limit=${limit}&offset=${offset}`) // custom albums endpoint served with express in react-dev-server - hacky
         .map(result => albumsActions.list.success(result)) // pass the raw result to action creator
         .catch(error => Observable.of(albumsActions.list.failure(error)))
-    );
+    });
 
-export const albumsEpic = combineEpics(init$, get$);
+export const scroll$ = (action$) => {
+  const bottom$ = action$.ofType('SCROLL')
+    .filter(() => (document.body.scrollHeight - window.scrollY) === window.innerHeight)
+    .mapTo({ type: 'PAGE/INCREASE_OFFSET' });
+
+  const load$ = action$.ofType('PAGE/INCREASE_OFFSET').mapTo(albumsActions.list.request());
+
+  return Observable.merge(bottom$, load$);
+}
+
+export const albumsEpic = combineEpics(init$, get$, scroll$);

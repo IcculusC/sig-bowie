@@ -91,19 +91,22 @@ module.exports = function(proxy, allowedHost) {
         clientSecret: process.env.REACT_APP_SPOTIFY_CLIENT_SECRET,
       });
 
+      function iHateTyping(req, res) {
+        return spotifyApi.getArtistAlbums('0oSGxfWSnnOXhD2fKuz2Gy', { limit: req.query.limit || 10, offset: req.query.offset || 0, include_groups: 'album' })
+          .then(function(data) { res.json(data.body) });
+      }
+
       app.get('/albums', function(req, res) {
         if (Date.now() > expires) {
           return spotifyApi.clientCredentialsGrant().then(function(result) {
             spotifyApi.setAccessToken(result.body['access_token']);
             expires = Date.now() + result.body['expires_in'];
 
-            return spotifyApi.getArtistAlbums('0oSGxfWSnnOXhD2fKuz2Gy', { limit: 10, include_groups: 'album' })
-              .then(function(data) { res.json(data.body) });
+            return iHateTyping(req, res);
           }).catch(() => res.status(400).end());
         }
 
-        return spotifyApi.getArtistAlbums('0oSGxfWSnnOXhD2fKuz2Gy', { limit: 10, include_groups: 'album' })
-          .then(function(data) { res.json(data.body) });
+        return iHateTyping(req, res);
       });
 
       // This lets us open files from the runtime error overlay.

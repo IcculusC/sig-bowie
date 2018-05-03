@@ -7,6 +7,8 @@ export const initialState = () => ({
   fetching: false,
   list: [],
   error: undefined,
+  limit: 10,
+  offset: 0,
 })
 
 export const albumsReducer = handleActions({
@@ -26,11 +28,15 @@ export const albumsReducer = handleActions({
       releaseDate,
       images,
       openUrl,
-    }));
+    }))
+    .filter(item => state.list.find(item_ => item.id === item_.id) === undefined);
     
-    return { ...state, fetching: false, list: filtered };
+    return { ...state, fetching: false, list: [...state.list, ...filtered] };
   },
   [albumsActions.list.failure](state, action) {
     return { ...state, fetching: false, list: [], error: action.payload };
   },
+  'PAGE/INCREASE_OFFSET'(state) {
+    return { ...state, offset: state.offset + state.limit };
+  }
 }, initialState());
